@@ -48,7 +48,15 @@ export default function ProductDetail() {
   const productId = slugMap[slug as keyof typeof slugMap];
 
   const { data: product, isLoading } = useQuery<Product>({
-    queryKey: [`/api/products/${productId}`],
+    queryKey: ["product", productId],
+    queryFn: async () => {
+      const response = await fetch(`/api/products/${productId}`);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch product: ${response.status}`);
+      }
+      return response.json();
+    },
+    enabled: !!productId
   });
 
   const productImages = getProductImages(slug || "mother-black");
