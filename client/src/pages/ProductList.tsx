@@ -5,7 +5,14 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ProductList() {
   const { data: products = [], isLoading } = useQuery<Product[]>({
-    queryKey: ["/api/products"],
+    queryKey: ["products"],
+    queryFn: async () => {
+      const response = await fetch('/api/products');
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+      return response.json();
+    }
   });
 
   const bracelets = products.filter(product => product.category === "bracelet");
