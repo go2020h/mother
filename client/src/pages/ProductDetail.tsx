@@ -50,11 +50,19 @@ export default function ProductDetail() {
   const { data: product, isLoading } = useQuery<Product>({
     queryKey: ["product", productId],
     queryFn: async () => {
-      const response = await fetch(`/api/products/${productId}`);
+      // 全製品を取得し、その中から該当IDの商品をフィルタリング
+      const response = await fetch('/api/products');
       if (!response.ok) {
-        throw new Error(`Failed to fetch product: ${response.status}`);
+        throw new Error(`Failed to fetch products: ${response.status}`);
       }
-      return response.json();
+      const products = await response.json();
+      const foundProduct = products.find((p: Product) => p.id.toString() === productId);
+      
+      if (!foundProduct) {
+        throw new Error(`Product with ID ${productId} not found`);
+      }
+      
+      return foundProduct;
     },
     enabled: !!productId
   });
