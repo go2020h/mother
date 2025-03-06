@@ -1,11 +1,27 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import { storage } from "./storage";
 
-export function registerRoutes(app: Express): Server {
-  // put application routes here
-  // prefix all routes with /api
+export async function registerRoutes(app: Express): Promise<Server> {
+  app.get("/api/products", async (_req, res) => {
+    const products = await storage.getProducts();
+    res.json(products);
+  });
+
+  app.get("/api/products/:id", async (req, res) => {
+    const product = await storage.getProductById(Number(req.params.id));
+    if (!product) {
+      res.status(404).json({ message: "Product not found" });
+      return;
+    }
+    res.json(product);
+  });
+
+  app.get("/api/products/category/:category", async (req, res) => {
+    const products = await storage.getProductsByCategory(req.params.category);
+    res.json(products);
+  });
 
   const httpServer = createServer(app);
-
   return httpServer;
 }
