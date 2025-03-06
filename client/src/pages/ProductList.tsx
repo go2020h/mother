@@ -3,18 +3,22 @@ import { type Product } from "@shared/schema";
 import ProductCard from "@/components/ProductCard";
 import { Skeleton } from "@/components/ui/skeleton";
 
+// APIから製品を取得する関数を定義
+const fetchProducts = async (): Promise<Product[]> => {
+  const response = await fetch('/api/products');
+  if (!response.ok) {
+    throw new Error(`Failed to fetch products: ${response.status}`);
+  }
+  return response.json();
+};
+
 export default function ProductList() {
-  const { data: products = [], isLoading } = useQuery<Product[]>({
+  const { data: products = [], isLoading, error } = useQuery<Product[]>({
     queryKey: ["products"],
-    queryFn: async () => {
-      const response = await fetch('/api/products');
-      if (!response.ok) {
-        throw new Error('Failed to fetch products');
-      }
-      return response.json();
-    }
+    queryFn: fetchProducts
   });
 
+  // 以下から同じ
   const bracelets = products.filter(product => product.category === "bracelet");
   const straps = products.filter(product => product.category === "strap");
 
