@@ -2,19 +2,28 @@ import { Link, useLocation } from "wouter";
 import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile"; // useIsMobileフックをインポート
 
 export default function Navigation() {
+  const isMobile = useIsMobile(); // モバイル表示かどうかを検出
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [location] = useLocation();
 
   useEffect(() => {
-    // Open menu by default only on the products listing page
-    if (location === "/products") {
+    // 製品一覧ページでは、モバイル表示でない場合のみデフォルトでメニューを開く
+    if (location === "/products" && !isMobile) {
       setIsMenuOpen(true);
     } else {
       setIsMenuOpen(false);
     }
-  }, [location]);
+  }, [location, isMobile]); // isMobileも依存配列に追加
+
+  // 画面サイズが変わった時にモバイル表示になったらメニューを閉じる
+  useEffect(() => {
+    if (isMobile) {
+      setIsMenuOpen(false);
+    }
+  }, [isMobile]);
 
   return (
     <nav className="fixed top-0 w-full bg-white z-50 border-b">
@@ -42,12 +51,12 @@ export default function Navigation() {
       >
         <h2 className="text-xl font-bold mb-4 px-4">製品一覧</h2>
         <nav className="space-y-2">
-          <Link href="/products" target="_blank">
+          <Link href="/products">
             <a className="block w-full text-left px-4 py-2 hover:bg-gray-100 rounded-lg">
               MOTHER Bracelet
             </a>
           </Link>
-          <Link href="/products" target="_blank">
+          <Link href="/products">
             <a className="block w-full text-left px-4 py-2 hover:bg-gray-100 rounded-lg">
               Accessories
             </a>
