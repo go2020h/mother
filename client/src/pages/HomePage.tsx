@@ -37,11 +37,25 @@ export default function Home() {
                     </Link>
                   </div>
                 */}
+                {/*
                 <div className="pushbutton-wp mt-8 flex justify-center pb-16">
                   <a href="/products" className="inline-block" target="_blank" rel="noopener noreferrer">
                     <div className="pushbutton px-12 py-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-lg font-bold">製品一覧はこちら</div>
                   </a>
                 </div>
+                */}
+
+                <div className="pushbutton-wp mt-8 flex justify-center pb-16">
+                  <a href="/products" className="inline-block transition-all duration-300" target="_blank" rel="noopener noreferrer">
+                    <div className="pushbutton px-14 py-5 bg-primary text-primary-foreground rounded-lg border-2 border-white transition-all text-xl font-bold flex items-center hover:bg-white hover:text-black">
+                      製品一覧はこちら
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+
               </div>
             </div>
           </div>
@@ -149,6 +163,18 @@ export default function Home() {
                   自分のカラダをモニタリングするということは、自分の身体の仕組みを知るということです。<strong>体の仕組みを知ることで、無意識のうちに健康な状態を作る</strong>ことができます。
                 </p>
 
+                <div className="hidden md:block md:h-4"></div>
+                <div className="pushbutton-wp mt-16 flex justify-center pb-0 md:pb-16">
+                  <a href="/products" className="inline-block transition-all duration-300" target="_blank" rel="noopener noreferrer">
+                    <div className="pushbutton px-14 py-5 bg-primary text-primary-foreground rounded-lg border-2 border-white hover:border-black transition-all text-xl font-bold flex items-center hover:bg-primary/5 hover:text-black">
+                      製品一覧はこちら
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+
                 <div className="relative">
                   <h1 className="text-3xl font-bold text-center text-white bg-black py-4 px-4 mb-8 w-screen relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw]">あなただけのデータを統計化</h1>
                 </div>
@@ -248,6 +274,18 @@ export default function Home() {
                 <p>専用アプリのSup機能では、大切な人を気に掛けることができ、お互いにエナジーを送りあうことができます。</p>
 
                 <img className="detail-image w-full" src="//static.makuake.com/upload/project/18232/detail_18232_16242423186217.png" alt="アプリケーション画面" />
+
+                <div className="hidden md:block md:h-4"></div>
+                <div className="pushbutton-wp mt-16 flex justify-center pb-0 md:pb-16">
+                  <a href="/products" className="inline-block transition-all duration-300" target="_blank" rel="noopener noreferrer">
+                    <div className="pushbutton px-14 py-5 bg-primary text-primary-foreground rounded-lg border-2 border-white hover:border-black transition-all text-xl font-bold flex items-center hover:bg-primary/5 hover:text-black">
+                      製品一覧はこちら
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </a>
+                </div>
 
                 <div className="relative">
                   <h1 className="text-3xl font-bold text-center text-white bg-black py-4 px-4 mb-8 w-screen relative left-[50%] right-[50%] -ml-[50vw] -mr-[50vw]">健康のおすそ分け</h1>
@@ -372,6 +410,19 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
+
+                <div className="hidden md:block md:h-4"></div>
+                <div className="pushbutton-wp mt-16 flex justify-center pb-0 md:pb-16">
+                  <a href="/products" className="inline-block transition-all duration-300" target="_blank" rel="noopener noreferrer">
+                    <div className="pushbutton px-14 py-5 bg-primary text-primary-foreground rounded-lg border-2 border-white hover:border-black transition-all text-xl font-bold flex items-center hover:bg-primary/5 hover:text-black">
+                      製品一覧はこちら
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+
               </div>
             </div>
           </div>
